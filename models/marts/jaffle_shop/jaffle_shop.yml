@@ -1,0 +1,13 @@
+models:
+    - name: dim_customers
+      description: "A dbt Learn course model"
+      columns:
+          - name: customer_id
+            description: "The primary key for this table"
+            tests:
+                - not_null
+                - unique:
+                    config:
+                      severity: error
+                      error_if: '>100'
+                      warn_if: '>50'
