@@ -37,3 +37,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   dbt_learn:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
