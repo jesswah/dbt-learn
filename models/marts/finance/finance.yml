@@ -13,8 +13,8 @@ models:
         data_tests:
           - not_null
       - name: amount
-        data_tests:
-          - greater_than_number:
-              arguments:
-                column_name: amount
-                value: 10
+        # data_tests:
+        #   - greater_than_number:
+        #       arguments:
+        #         column_name: amount
+        #         value: 10

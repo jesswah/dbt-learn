@@ -1,4 +1,4 @@
-{% test not_null(model, column_name, column_id) %}
+{% test not_null_or_test(model, column_name, column_id) %}
 
 SELECT 
     *
