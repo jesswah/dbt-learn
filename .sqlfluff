@@ -1,0 +1,52 @@
+# Source: https://docs.sqlfluff.com/en/stable/configuration.html#new-project-configuration
+
+[sqlfluff]
+dialect = snowflake
+templater = dbt
+max_line_length = 120
+exclude_rules = aliasing.forbid, ambiguous.union, ambiguous.column_count, ambiguous.join, structure.using
+
+# Aliasing 
+[sqlfluff:rules:aliasing.expression]
+allow_scalar = FALSE
+
+# Ambiguity
+## Use position rather than field references in group by and order by
+[sqlfluff:rules:ambiguous.column_references]
+group_by_and_order_by_style = implicit
+
+# Capitalisation
+## Everything but column/table identifiers are upper case
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+[sqlfluff:rules:capitalisation.identifiers]
+capitalisation_policy = lower
+[sqlfluff:rules:capitalisation.functions]
+extended_capitalisation_policy = upper
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = upper
+[sqlfluff:rules:capitalisation.types]
+capitalisation_policy = upper
+
+# Conventions
+## Prefer :: casting method
+[sqlfluff:rules:convention.casting_style]
+preferred_type_casting_style = shorthand
+
+# References
+[sqlfluff:rules:references.consistent]
+single_table_references = consistent
+
+# Structure
+## No subqueries in FROM or JOIN
+[sqlfluff:rules:structure.subquery]
+forbid_subquery_in = both
+
+## Source: https://docs.sqlfluff.com/en/stable/layout.html#configuring-indent-locations
+# Indentation
+[sqlfluff:indentation]
+tab_space_size = 4
+indented_joins = True
+allow_implicit_indents = True
+indented_on_contents = False
+indented_then = False
