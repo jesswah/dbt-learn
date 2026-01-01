@@ -45,4 +45,5 @@ models:
       # each model in that path to have at least one test that either:
       #    1. starts with "unique" (note the ".*" regex suffix) OR (note the "|" regex)
       #    2. is an exact match for the "not_null" test.
-      +required_tests: {"unique.*|not_null": 1}
+      +required_tests: 
+        +"unique.*|not_null": 1
