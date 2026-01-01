@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy = 'delete+insert',
+        unique_key='order_id'
+    )
+}}
+
 with orders as  (
     select * 
     from {{ ref ('stg_jaffle_shop__orders' )}}
@@ -22,3 +30,7 @@ select
 from orders
     left join order_payments 
         using (order_id)
+{% if is_incremental %}
+where 
+    orders.order_date >= (select dateadd('day', -2, max(order_date)) from {{ this }})
+{% endif %}
