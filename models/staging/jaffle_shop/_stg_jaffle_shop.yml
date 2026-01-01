@@ -6,6 +6,7 @@ models:
           - unique
           - not_null
           - dbt_utils.cardinality_equality:
+            arguments:
               field: id
               to: source('jaffle_shop', 'customers')
 
