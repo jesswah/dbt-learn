@@ -23,12 +23,8 @@ sources:
           - name: status
             data_tests:
               - accepted_values:
-                  values:
-                    - completed
-                    - shipped
-                    - returned
-                    - placed
-                    - return_pending
+                  arguments:
+                    values: ['completed', 'shipped', 'returned', 'placed', 'return_pending']
         config:
           freshness:
             warn_after:
