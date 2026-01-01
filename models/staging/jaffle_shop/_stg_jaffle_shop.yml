@@ -1,10 +1,14 @@
 models:
-  # - name: stg_jaffle_shop__customers
-  #   columns:
-  #     - name: customer_id
-  #       data_tests:
-  #         - unique
-  #         - not_null
+  - name: stg_jaffle_shop__customers
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+          - dbt_utils.cardinality_equality:
+              arguments:
+                field: id
+                to: source('jaffle_shop', 'customers')
 
   - name: stg_jaffle_shop__orders
     columns:

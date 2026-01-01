@@ -3,8 +3,18 @@ models:
     columns:
       - name: order_id
         data_tests:
-          - not_null
+          # - not_null
           - unique
+          - not_null_or_test:
+              arguments:
+                column_name: order_id
+                column_id: customer_id
       - name: customer_id
         data_tests:
           - not_null
+      - name: amount
+        # data_tests:
+        #   - greater_than_number:
+        #       arguments:
+        #         column_name: amount
+        #         value: 10
