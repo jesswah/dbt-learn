@@ -1,10 +1,4 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy = 'delete+insert',
-        unique_key='order_id'
-    )
-}}
+
 
 WITH orders AS (
     SELECT *
@@ -32,7 +26,4 @@ SELECT
 FROM orders
     LEFT JOIN order_payments
         USING (order_id)
-{% if is_incremental %}
-    WHERE
-        orders.order_date >= (SELECT DATEADD('day', -2, MAX(order_date)) FROM {{ this }})
-{% endif %}
+
