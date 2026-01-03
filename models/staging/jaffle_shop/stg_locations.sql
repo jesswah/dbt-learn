@@ -1,8 +1,8 @@
 WITH
-    source AS (
-        SELECT * 
-        FROM {{ source('jaffle_shop', 'stores') }}
-    )
+source AS (
+    SELECT * 
+    FROM {{ source('jaffle_shop', 'stores') }}
+)
 
 SELECT
     id AS location_id,
